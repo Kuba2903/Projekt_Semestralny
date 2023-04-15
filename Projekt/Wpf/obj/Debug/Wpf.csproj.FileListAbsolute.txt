@@ -16,3 +16,5 @@ C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\Wpf.exe
 C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\Wpf.pdb
 C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\Authors.g.cs
 C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\Authors.baml
+C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\Books.g.cs
+C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\Books.baml

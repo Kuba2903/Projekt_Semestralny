@@ -7,13 +7,46 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Title="MainWindow" Height="450" Width="800">
-    <Grid Background="#FFBD3737">
-        <Button Content="HOME" x:Name="but0" HorizontalAlignment="Left" Margin="0,-1,0,0" VerticalAlignment="Top" Height="25" Width="130" Background="#FFF6F6F6" Click="Button_Click"/>
-        <Button Content="RENTALS" HorizontalAlignment="Left" Margin="670,-1,0,0" VerticalAlignment="Top" Height="25" Width="130"/>
-        <Button Content="READERS" HorizontalAlignment="Left" Margin="495,-1,0,0" VerticalAlignment="Top" Height="25" Width="130"/>
-        <Button Content="BOOKS" HorizontalAlignment="Center" Margin="0,-1,0,0" VerticalAlignment="Top" Height="25" Width="130"/>
-        <Button Content="AUTHORS" HorizontalAlignment="Left" Margin="170,-1,0,0" VerticalAlignment="Top" Height="25" Width="130" Click="Button_Click_1"/>
-        <Frame x:Name="frame" Height="NaN" Margin="0,59,0,0" Width="NaN"/>
-        <Label x:Name="label" Content="Pick the database table you want to edit" HorizontalAlignment="Center" Margin="0,69,0,0" VerticalAlignment="Top" Height="45" Width="420" FontSize="22"/>
+    <Grid Background="#FF17F10C">
+        <Label Content="Available Books to rent" HorizontalAlignment="Left" Margin="65,0,0,0" VerticalAlignment="Top" Height="55" Width="475" FontSize="24"/>
+        <Label Content="Select the Books and enter your info" HorizontalAlignment="Left" Margin="375,14,0,0" VerticalAlignment="Top" Height="30" Width="215" RenderTransformOrigin="-0.047,0.667"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="350,54,0,0" VerticalAlignment="Top" Height="30" Width="70" RenderTransformOrigin="0.286,0.5"/>
+        <Label Content="Return Date" HorizontalAlignment="Left" Margin="350,159,0,0" VerticalAlignment="Top" Height="30" Width="80"/>
+        <Label Content="Phone" HorizontalAlignment="Left" Margin="350,124,0,0" VerticalAlignment="Top" Height="30" Width="70" RenderTransformOrigin="0.286,0.668"/>
+        <Label Content="Surname" HorizontalAlignment="Left" Margin="350,89,0,0" VerticalAlignment="Top" Height="30" Width="70"/>
+        <TextBox x:Name="firstname" HorizontalAlignment="Left" Margin="445,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="surname" HorizontalAlignment="Left" Margin="445,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="phone" HorizontalAlignment="Left" Margin="445,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="data" HorizontalAlignment="Left" Margin="445,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Rent" HorizontalAlignment="Left" Margin="30,50,0,0" VerticalAlignment="Top" Height="140" Width="140" Click="Button_Click1">
+            <Button.Background>
+                <ImageBrush ImageSource="/img/stone.jpg"/>
+            </Button.Background>
+        </Button>
+        <Button Content="" HorizontalAlignment="Left" Margin="190,50,0,0" VerticalAlignment="Top" Height="140" Width="140" Click="Button_Click2">
+            <Button.Background>
+                <ImageBrush ImageSource="/img - Copy/goblet.jpg"/>
+            </Button.Background>
+        </Button>
+        <Button Content="" HorizontalAlignment="Left" Margin="30,210,0,0" VerticalAlignment="Top" Height="140" Width="140" Click="Button_Click4">
+            <Button.Background>
+                <ImageBrush ImageSource="/img - Copy/krol.jpg"/>
+            </Button.Background>
+        </Button>
+        <Button Content="" HorizontalAlignment="Left" Margin="195,205,0,0" VerticalAlignment="Top" Height="140" Width="140" Click="Button_Click3">
+            <Button.Background>
+                <ImageBrush ImageSource="/img/wiedzmin.jpg"/>
+            </Button.Background>
+        </Button>
+        <ListBox Margin="360,254,370,70">
+            <ListBoxItem x:Name="horrors" Content="Horrors" Selected="horrors_Selected"/>
+            <ListBoxItem x:Name="fantasy" Content="Fantasy"/>
+            <ListBoxItem x:Name="drama" Content="Drama"/>
+            <ListBoxItem x:Name="Sci" Content="Sci_fi"/>
+        </ListBox>
+        <Label Content="Find your book by genre" HorizontalAlignment="Left" Margin="350,219,0,0" VerticalAlignment="Top" Width="155"/>
+        <Frame x:Name="frame"/>
+
+
     </Grid>
 </Window>
