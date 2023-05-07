@@ -55,11 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Authors.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Books.xaml">
+    <Page Include="Horrors.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -71,11 +67,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Authors.xaml.cs">
-      <DependentUpon>Authors.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Books.xaml.cs">
-      <DependentUpon>Books.xaml</DependentUpon>
+    <Compile Include="Horrors.xaml.cs">
+      <DependentUpon>Horrors.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -100,7 +93,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="img - Copy\wiedzmin.webp" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -113,25 +105,24 @@
     <Resource Include="img\goblet.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="goblet.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="img\krol.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="img - Copy\deathly.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="img - Copy\goblet.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="img - Copy\krol.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\wiedzmin.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\stone.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\eyes.jpg" />
+    <Resource Include="img\hobbit.jpg" />
+    <Resource Include="img\LostTales.jpg" />
+    <Resource Include="img\outsider.jpg" />
+    <Resource Include="img\rose.jpg" />
+    <Resource Include="img\stand.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\arrow.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

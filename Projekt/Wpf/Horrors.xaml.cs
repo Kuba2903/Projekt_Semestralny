@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -11,20 +13,83 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Wpf
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Horrors.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Horrors : Window
     {
-        public MainWindow()
+        public Horrors()
         {
             InitializeComponent();
         }
+
+        private void rbChecked(object sender, RoutedEventArgs e)
+        {
+            MainWindow window = new MainWindow();
+            this.Close();
+            window.Show();
+        }
+
+        private void Books_Click(object sender, RoutedEventArgs e)
+        {
+
+            SqlConnection con = new SqlConnection("Data Source=HP;Initial Catalog=Book_Library;Integrated Security=True");
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("Select * from Books where genre = 'Horror'",con);
+            cmd.ExecuteNonQuery();
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable("Books");
+            adapter.Fill(dt);
+
+            dataGridBooks.Visibility = Visibility.Visible;
+            dataGridBooks.ItemsSource = dt.DefaultView;
+            
+
+            adapter.Update(dt);
+
+            con.Close();
+        }
+
+        private void Authors_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataGridAuthors.IsVisible)
+                dataGridAuthors.Visibility = Visibility.Hidden;
+
+            SqlConnection con = new SqlConnection("Data Source=HP;Initial Catalog=Book_Library;Integrated Security=True");
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("Select * from Authors", con);
+            cmd.ExecuteNonQuery();
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable("Authors");
+            adapter.Fill(dt);
+
+            dataGridAuthors.Visibility = Visibility.Visible;
+            dataGridAuthors.ItemsSource = dt.DefaultView;
+
+            adapter.Update(dt);
+
+            con.Close();
+        }
+
+        private void home_Selected(object sender, RoutedEventArgs e)
+        {
+            MainWindow window = new MainWindow();
+            this.Close();
+            window.Show();
+        }
+
+        DateTime date = DateTime.Now;
+        int reader_id = 1;
 
         private void Empty_strings()
         {
@@ -32,34 +97,7 @@ namespace Wpf
             surname.Text = string.Empty;
             phone.Text = string.Empty;
         }
-        int reader_id = 1;
-        DateTime date = DateTime.Now;
-        private void Button_Click1(object sender, RoutedEventArgs e)
-        {
-
-            SqlConnection con = new SqlConnection("Data Source=HP;Initial Catalog=Book_Library;Integrated Security=True");
-            con.Open();
-            SqlCommand cmd = new SqlCommand("Insert into Readers values (@first_name, @last_name,@phone_number,@return_date,@book_id)", con);
-            cmd.Parameters.AddWithValue("@first_name", firstname.Text);
-            cmd.Parameters.AddWithValue("@last_name", surname.Text);
-            cmd.Parameters.AddWithValue("@phone_number", phone.Text);
-            cmd.Parameters.AddWithValue("@return_date", date.AddMonths(1));
-            cmd.Parameters.AddWithValue("@book_id", 1);
-
-            SqlCommand cmd2 = new SqlCommand("Insert into Rentals values (@book_id, @reader_id)", con);
-            cmd2.Parameters.AddWithValue("@book_id", 1);
-            cmd2.Parameters.AddWithValue("@reader_id", reader_id);
-
-            reader_id++;
-
-            cmd.ExecuteNonQuery();
-            cmd2.ExecuteNonQuery();
-            con.Close();
-            Empty_strings();
-            MessageBox.Show("Success");
-        }
-
-        private void Button_Click2(object sender, RoutedEventArgs e)
+        private void Book0_Click(object sender, RoutedEventArgs e)
         {
             SqlConnection con = new SqlConnection("Data Source=HP;Initial Catalog=Book_Library;Integrated Security=True");
             con.Open();
@@ -68,10 +106,10 @@ namespace Wpf
             cmd.Parameters.AddWithValue("@last_name", surname.Text);
             cmd.Parameters.AddWithValue("@phone_number", phone.Text);
             cmd.Parameters.AddWithValue("@return_date", date.AddMonths(1));
-            cmd.Parameters.AddWithValue("@book_id", 2);
+            cmd.Parameters.AddWithValue("@book_id", 7);
 
             SqlCommand cmd2 = new SqlCommand("Insert into Rentals values (@book_id, @reader_id)", con);
-            cmd2.Parameters.AddWithValue("@book_id", 2);
+            cmd2.Parameters.AddWithValue("@book_id", 7);
             cmd2.Parameters.AddWithValue("@reader_id", reader_id);
             reader_id++;
             cmd.ExecuteNonQuery();
@@ -81,7 +119,7 @@ namespace Wpf
             MessageBox.Show("Success");
         }
 
-        private void Button_Click3(object sender, RoutedEventArgs e)
+        private void Book1_Click(object sender, RoutedEventArgs e)
         {
             SqlConnection con = new SqlConnection("Data Source=HP;Initial Catalog=Book_Library;Integrated Security=True");
             con.Open();
@@ -90,10 +128,10 @@ namespace Wpf
             cmd.Parameters.AddWithValue("@last_name", surname.Text);
             cmd.Parameters.AddWithValue("@phone_number", phone.Text);
             cmd.Parameters.AddWithValue("@return_date", date.AddMonths(1));
-            cmd.Parameters.AddWithValue("@book_id", 3);
+            cmd.Parameters.AddWithValue("@book_id", 8);
 
             SqlCommand cmd2 = new SqlCommand("Insert into Rentals values (@book_id, @reader_id)", con);
-            cmd2.Parameters.AddWithValue("@book_id", 3);
+            cmd2.Parameters.AddWithValue("@book_id", 8);
             cmd2.Parameters.AddWithValue("@reader_id", reader_id);
             reader_id++;
             cmd.ExecuteNonQuery();
@@ -103,7 +141,7 @@ namespace Wpf
             MessageBox.Show("Success");
         }
 
-        private void Button_Click4(object sender, RoutedEventArgs e)
+        private void Book2_Click(object sender, RoutedEventArgs e)
         {
             SqlConnection con = new SqlConnection("Data Source=HP;Initial Catalog=Book_Library;Integrated Security=True");
             con.Open();
@@ -112,10 +150,10 @@ namespace Wpf
             cmd.Parameters.AddWithValue("@last_name", surname.Text);
             cmd.Parameters.AddWithValue("@phone_number", phone.Text);
             cmd.Parameters.AddWithValue("@return_date", date.AddMonths(1));
-            cmd.Parameters.AddWithValue("@book_id", 4);
+            cmd.Parameters.AddWithValue("@book_id", 9);
 
             SqlCommand cmd2 = new SqlCommand("Insert into Rentals values (@book_id, @reader_id)", con);
-            cmd2.Parameters.AddWithValue("@book_id", 4);
+            cmd2.Parameters.AddWithValue("@book_id", 9);
             cmd2.Parameters.AddWithValue("@reader_id", reader_id);
             reader_id++;
             cmd.ExecuteNonQuery();
@@ -125,11 +163,14 @@ namespace Wpf
             MessageBox.Show("Success");
         }
 
-        private void horrors_Selected(object sender, RoutedEventArgs e)
+        private void btnReset(object sender, RoutedEventArgs e)
         {
-            Horrors window = new Horrors();
-            this.Close();
-            window.Show();
+            firstname.Text = string.Empty;
+            surname.Text = string.Empty;
+            phone.Text = string.Empty;
+
+            dataGridBooks .Visibility = Visibility.Hidden;
+            dataGridAuthors .Visibility = Visibility.Hidden;
         }
     }
 }

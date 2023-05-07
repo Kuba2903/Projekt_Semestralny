@@ -14,7 +14,5 @@ C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\Wpf.csproj.GenerateResour
 C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\Wpf.csproj.CoreCompileInputs.cache
 C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\Wpf.exe
 C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\Wpf.pdb
-C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\Authors.g.cs
-C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\Authors.baml
-C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\Books.g.cs
-C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\Books.baml
+C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\Horrors.g.cs
+C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\Horrors.baml
