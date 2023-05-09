@@ -1,7 +1,10 @@
 use Book_Library
 go
-create table Rentals(
-book_id int Foreign Key References Books(book_id),
-reader_id int Foreign Key References Readers(reader_id)
+CREATE TABLE Rentals (
+    book_id int,
+    reader_id int Identity(1,1),
+    PRIMARY KEY (book_id, reader_id),
+    FOREIGN KEY (book_id) REFERENCES Books(book_id),
+    FOREIGN KEY (reader_id) REFERENCES Readers(reader_id)
 )
 go

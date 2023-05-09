@@ -25,6 +25,15 @@ namespace Wpf
         public Horrors()
         {
             InitializeComponent();
+            MainWindow window = new MainWindow();
+            if (window.Background == Brushes.White)
+                this.Background = Brushes.White;
+            else if (window.Background == Brushes.Green)
+                this.Background = Brushes.Green;
+            else if (window.Background == Brushes.Red)
+                this.Background = Brushes.Red;
+            else
+                this.Background = Brushes.Blue;
         }
 
         private void rbChecked(object sender, RoutedEventArgs e)
@@ -89,7 +98,7 @@ namespace Wpf
         }
 
         DateTime date = DateTime.Now;
-        int reader_id = 1;
+
 
         private void Empty_strings()
         {
@@ -108,10 +117,9 @@ namespace Wpf
             cmd.Parameters.AddWithValue("@return_date", date.AddMonths(1));
             cmd.Parameters.AddWithValue("@book_id", 7);
 
-            SqlCommand cmd2 = new SqlCommand("Insert into Rentals values (@book_id, @reader_id)", con);
+            SqlCommand cmd2 = new SqlCommand("Insert into Rentals values (@book_id)", con);
             cmd2.Parameters.AddWithValue("@book_id", 7);
-            cmd2.Parameters.AddWithValue("@reader_id", reader_id);
-            reader_id++;
+
             cmd.ExecuteNonQuery();
             cmd2.ExecuteNonQuery();
             con.Close();
@@ -130,10 +138,9 @@ namespace Wpf
             cmd.Parameters.AddWithValue("@return_date", date.AddMonths(1));
             cmd.Parameters.AddWithValue("@book_id", 8);
 
-            SqlCommand cmd2 = new SqlCommand("Insert into Rentals values (@book_id, @reader_id)", con);
+            SqlCommand cmd2 = new SqlCommand("Insert into Rentals values (@book_id)", con);
             cmd2.Parameters.AddWithValue("@book_id", 8);
-            cmd2.Parameters.AddWithValue("@reader_id", reader_id);
-            reader_id++;
+
             cmd.ExecuteNonQuery();
             cmd2.ExecuteNonQuery();
             con.Close();
@@ -152,10 +159,9 @@ namespace Wpf
             cmd.Parameters.AddWithValue("@return_date", date.AddMonths(1));
             cmd.Parameters.AddWithValue("@book_id", 9);
 
-            SqlCommand cmd2 = new SqlCommand("Insert into Rentals values (@book_id, @reader_id)", con);
+            SqlCommand cmd2 = new SqlCommand("Insert into Rentals values (@book_id)", con);
             cmd2.Parameters.AddWithValue("@book_id", 9);
-            cmd2.Parameters.AddWithValue("@reader_id", reader_id);
-            reader_id++;
+
             cmd.ExecuteNonQuery();
             cmd2.ExecuteNonQuery();
             con.Close();

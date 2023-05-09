@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -32,97 +33,132 @@ namespace Wpf
             surname.Text = string.Empty;
             phone.Text = string.Empty;
         }
-        int reader_id = 1;
         DateTime date = DateTime.Now;
-        private void Button_Click1(object sender, RoutedEventArgs e)
+
+
+        private void Book0_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                SqlConnection con = new SqlConnection("Data Source=HP;Initial Catalog=Book_Library;Integrated Security=True");
+                con.Open();
+                SqlCommand cmd = new SqlCommand("Insert into Readers values (@first_name, @last_name,@phone_number,@return_date,@book_id)", con);
+                cmd.Parameters.AddWithValue("@first_name", firstname.Text);
+                cmd.Parameters.AddWithValue("@last_name", surname.Text);
+                cmd.Parameters.AddWithValue("@phone_number", phone.Text);
+                cmd.Parameters.AddWithValue("@return_date", date.AddMonths(1));
+                cmd.Parameters.AddWithValue("@book_id", 3);
 
-            SqlConnection con = new SqlConnection("Data Source=HP;Initial Catalog=Book_Library;Integrated Security=True");
-            con.Open();
-            SqlCommand cmd = new SqlCommand("Insert into Readers values (@first_name, @last_name,@phone_number,@return_date,@book_id)", con);
-            cmd.Parameters.AddWithValue("@first_name", firstname.Text);
-            cmd.Parameters.AddWithValue("@last_name", surname.Text);
-            cmd.Parameters.AddWithValue("@phone_number", phone.Text);
-            cmd.Parameters.AddWithValue("@return_date", date.AddMonths(1));
-            cmd.Parameters.AddWithValue("@book_id", 1);
+                SqlCommand cmd2 = new SqlCommand("Insert into Rentals values (@book_id)", con);
+                cmd2.Parameters.AddWithValue("@book_id", 3);
 
-            SqlCommand cmd2 = new SqlCommand("Insert into Rentals values (@book_id, @reader_id)", con);
-            cmd2.Parameters.AddWithValue("@book_id", 1);
-            cmd2.Parameters.AddWithValue("@reader_id", reader_id);
-
-            reader_id++;
-
-            cmd.ExecuteNonQuery();
-            cmd2.ExecuteNonQuery();
-            con.Close();
-            Empty_strings();
-            MessageBox.Show("Success");
+                cmd.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
+                con.Close();
+                Empty_strings();
+                MessageBox.Show("Success");
+            }catch(Exception ex)
+            {
+                MessageBox.Show("You must enter the proper information!");
+            }
         }
 
-        private void Button_Click2(object sender, RoutedEventArgs e)
+        private void Book1_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection con = new SqlConnection("Data Source=HP;Initial Catalog=Book_Library;Integrated Security=True");
-            con.Open();
-            SqlCommand cmd = new SqlCommand("Insert into Readers values (@first_name, @last_name,@phone_number,@return_date,@book_id)", con);
-            cmd.Parameters.AddWithValue("@first_name", firstname.Text);
-            cmd.Parameters.AddWithValue("@last_name", surname.Text);
-            cmd.Parameters.AddWithValue("@phone_number", phone.Text);
-            cmd.Parameters.AddWithValue("@return_date", date.AddMonths(1));
-            cmd.Parameters.AddWithValue("@book_id", 2);
+            try
+            {
+                SqlConnection con = new SqlConnection("Data Source=HP;Initial Catalog=Book_Library;Integrated Security=True");
+                con.Open();
+                SqlCommand cmd = new SqlCommand("Insert into Readers values (@first_name, @last_name,@phone_number,@return_date,@book_id)", con);
+                cmd.Parameters.AddWithValue("@first_name", firstname.Text);
+                cmd.Parameters.AddWithValue("@last_name", surname.Text);
+                cmd.Parameters.AddWithValue("@phone_number", phone.Text);
+                cmd.Parameters.AddWithValue("@return_date", date.AddMonths(1));
+                cmd.Parameters.AddWithValue("@book_id", 2);
 
-            SqlCommand cmd2 = new SqlCommand("Insert into Rentals values (@book_id, @reader_id)", con);
-            cmd2.Parameters.AddWithValue("@book_id", 2);
-            cmd2.Parameters.AddWithValue("@reader_id", reader_id);
-            reader_id++;
-            cmd.ExecuteNonQuery();
-            cmd2.ExecuteNonQuery();
-            con.Close();
-            Empty_strings();
-            MessageBox.Show("Success");
+                SqlCommand cmd2 = new SqlCommand("Insert into Rentals values (@book_id)", con);
+                cmd2.Parameters.AddWithValue("@book_id", 2);
+
+                cmd.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
+                con.Close();
+                Empty_strings();
+                MessageBox.Show("Success");
+            }catch(Exception exception)
+            {
+                MessageBox.Show("You must enter the proper information!");
+            }
         }
 
-        private void Button_Click3(object sender, RoutedEventArgs e)
+        private void Book2_Click(object sender, RoutedEventArgs e)
         {
-            SqlConnection con = new SqlConnection("Data Source=HP;Initial Catalog=Book_Library;Integrated Security=True");
-            con.Open();
-            SqlCommand cmd = new SqlCommand("Insert into Readers values (@first_name, @last_name,@phone_number,@return_date,@book_id)", con);
-            cmd.Parameters.AddWithValue("@first_name", firstname.Text);
-            cmd.Parameters.AddWithValue("@last_name", surname.Text);
-            cmd.Parameters.AddWithValue("@phone_number", phone.Text);
-            cmd.Parameters.AddWithValue("@return_date", date.AddMonths(1));
-            cmd.Parameters.AddWithValue("@book_id", 3);
+            try
+            {
+                SqlConnection con = new SqlConnection("Data Source=HP;Initial Catalog=Book_Library;Integrated Security=True");
+                con.Open();
+                SqlCommand cmd = new SqlCommand("Insert into Readers values (@first_name, @last_name,@phone_number,@return_date,@book_id)", con);
+                cmd.Parameters.AddWithValue("@first_name", firstname.Text);
+                cmd.Parameters.AddWithValue("@last_name", surname.Text);
+                cmd.Parameters.AddWithValue("@phone_number", phone.Text);
+                cmd.Parameters.AddWithValue("@return_date", date.AddMonths(1));
+                cmd.Parameters.AddWithValue("@book_id", 4);
 
-            SqlCommand cmd2 = new SqlCommand("Insert into Rentals values (@book_id, @reader_id)", con);
-            cmd2.Parameters.AddWithValue("@book_id", 3);
-            cmd2.Parameters.AddWithValue("@reader_id", reader_id);
-            reader_id++;
-            cmd.ExecuteNonQuery();
-            cmd2.ExecuteNonQuery();
-            con.Close();
-            Empty_strings();
-            MessageBox.Show("Success");
+                SqlCommand cmd2 = new SqlCommand("Insert into Rentals values (@book_id)", con);
+                cmd2.Parameters.AddWithValue("@book_id", 4);
+
+                cmd.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
+                con.Close();
+                Empty_strings();
+                MessageBox.Show("Success");
+            }catch(Exception ex)
+            {
+                MessageBox.Show("You must enter the proper information!");
+            }
         }
 
-        private void Button_Click4(object sender, RoutedEventArgs e)
+        private void Rentals_Click(object sender, RoutedEventArgs e)
         {
             SqlConnection con = new SqlConnection("Data Source=HP;Initial Catalog=Book_Library;Integrated Security=True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("Insert into Readers values (@first_name, @last_name,@phone_number,@return_date,@book_id)", con);
-            cmd.Parameters.AddWithValue("@first_name", firstname.Text);
-            cmd.Parameters.AddWithValue("@last_name", surname.Text);
-            cmd.Parameters.AddWithValue("@phone_number", phone.Text);
-            cmd.Parameters.AddWithValue("@return_date", date.AddMonths(1));
-            cmd.Parameters.AddWithValue("@book_id", 4);
 
-            SqlCommand cmd2 = new SqlCommand("Insert into Rentals values (@book_id, @reader_id)", con);
-            cmd2.Parameters.AddWithValue("@book_id", 4);
-            cmd2.Parameters.AddWithValue("@reader_id", reader_id);
-            reader_id++;
+            SqlCommand cmd = new SqlCommand("Select * from Rentals", con);
             cmd.ExecuteNonQuery();
-            cmd2.ExecuteNonQuery();
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable("Rentals");
+            adapter.Fill(dt);
+
+            dataGridRentals.Visibility = Visibility.Visible;
+            dataGridRentals.ItemsSource = dt.DefaultView;
+
+
+            adapter.Update(dt);
+
             con.Close();
-            Empty_strings();
-            MessageBox.Show("Success");
+        }
+
+        private void Readers_Click(object sender, RoutedEventArgs e)
+        {
+            SqlConnection con = new SqlConnection("Data Source=HP;Initial Catalog=Book_Library;Integrated Security=True");
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("Select * from Readers", con);
+            cmd.ExecuteNonQuery();
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable("Readers");
+            adapter.Fill(dt);
+
+            dataGridReaders.Visibility = Visibility.Visible;
+            dataGridReaders.ItemsSource = dt.DefaultView;
+
+
+            adapter.Update(dt);
+
+            con.Close();
         }
 
         private void horrors_Selected(object sender, RoutedEventArgs e)
@@ -131,5 +167,16 @@ namespace Wpf
             this.Close();
             window.Show();
         }
+
+        private void btnReset(object sender, RoutedEventArgs e)
+        {
+            firstname.Text = string.Empty;
+            surname.Text = string.Empty;
+            phone.Text = string.Empty;
+
+            dataGridReaders.Visibility = Visibility.Hidden;
+            dataGridRentals.Visibility = Visibility.Hidden;
+        }
+
     }
 }

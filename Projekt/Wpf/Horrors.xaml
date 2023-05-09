@@ -72,7 +72,7 @@
         <DataGrid x:Name="dataGridAuthors" AutoGenerateColumns="True"
                   Grid.Column="2" Visibility="Hidden"/>
 
-        <Button x:Name="reset" Content="Reset" Height="20" Width="50" VerticalAlignment="Top"
+        <Button x:Name="reset" Content="Reset" Height="40" Width="50" VerticalAlignment="Top"
                 HorizontalAlignment="Right" Click="btnReset"/>
 
     </Grid>
