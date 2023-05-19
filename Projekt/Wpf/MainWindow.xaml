@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Title="MainWindow" Height="450" Width="800">
-    <Grid Background="#FFD1D9DC">
+    <Grid Background="#FFD1D9DC" x:Name="window">
+
         <Grid.Resources>
             <Style x:Key="stylButton" TargetType="Button">
                 <Setter Property="Height" Value="40"/>
@@ -66,40 +67,69 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Column="0" Grid.Row="1" Content="" Click="Book0_Click"  >
+
+        <Menu Grid.Row="0">
+            <MenuItem  >
+                <MenuItem.Header>
+                    <WrapPanel>
+                        <Image Source="\img\gear.png" MaxWidth="15" MaxHeight="15" HorizontalAlignment="Left"/>
+                        <TextBlock Text="Settings" HorizontalAlignment="Right" Margin="4"/>
+                    </WrapPanel>
+                </MenuItem.Header>
+                <MenuItem Header="Background">
+                    <MenuItem x:Name="default" Header="Default" Click="DefaultBackground" IsChecked="True"/>
+                    <Separator/>
+                    <MenuItem x:Name="green" Header="Green" Click="GreenBackground" />
+                    <MenuItem x:Name="blue" Header="Blue" Click="BlueBackground"/>
+                </MenuItem>
+
+                <MenuItem Header="Foreground">
+                    <MenuItem x:Name="blackF" Header="Black" IsChecked="True"  Click="blackForeground"/>
+                    <Separator/>
+                    <MenuItem x:Name="redF" Header="Red" Click="redForeground" />
+                    <MenuItem x:Name="blueF" Header="Blue" Click="blueForeground" />
+                </MenuItem>
+
+                <MenuItem x:Name="bold" Header="Bold" Click="ItemBold" IsChecked="False"/>
+            </MenuItem>
+            <MenuItem Header="About the program" Click="AboutProgram"/>
+        </Menu>
+
+        <Button Grid.Column="0" Grid.Row="2" Content="" Click="Book0_Click"  >
             <Button.Background>
                 <ImageBrush ImageSource="/img/wiedzmin.jpg" Stretch="Fill"/>
             </Button.Background>
-            
+
 
         </Button>
 
-        <Button Grid.Column="1" Grid.Row="1" Content="" Click="Book1_Click">
+        <Button Grid.Column="1" Grid.Row="2" Content="" Click="Book1_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/img/stone.jpg" Stretch="Fill"/>
             </Button.Background>
         </Button>
 
-        <Button Grid.Column="2" Grid.Row="1" Content="" Click="Book2_Click">
+        <Button Grid.Column="2" Grid.Row="2" Content="" Click="Book2_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/img/krol.jpg" Stretch="Fill"/>
             </Button.Background>
         </Button>
 
-        <Label Grid.Column="3" Grid.Row="0" Content="Enter your info, and select the book " />
-        <Label Grid.Column="3" Grid.Row="0" Content="Name:" Margin="0,50,0,0" />
-        <Label Grid.Column="3" Grid.Row="0" Content="Surname:" Margin="0,100,0,0" />
-        <Label Grid.Column="3" Grid.Row="0" Content="Phone:" Margin="0,150,0,0" />
+        <Label Grid.Column="3" Grid.Row="1" Content="Enter your info, and select the book " />
+        <Label Grid.Column="3" Grid.Row="1" Content="Name:" Margin="0,50,0,0" />
+        <Label Grid.Column="3" Grid.Row="1" Content="Surname:" Margin="0,100,0,0" />
+        <Label Grid.Column="3" Grid.Row="1" Content="Phone:" Margin="0,150,0,0" />
 
-        <TextBox x:Name="firstname" Grid.Column="3" Grid.Row="0" TextWrapping="Wrap" Width="120" Height="15" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,55,0,0" />
-        <TextBox x:Name="surname" Grid.Column="3" Grid.Row="0" TextWrapping="Wrap" Width="120" Height="15" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,105,0,0"/>
-        <TextBox x:Name="phone">
+        <TextBox x:Name="firstname" Grid.Column="3" Grid.Row="1" TextWrapping="Wrap" Width="120" Height="15" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,55,0,0" TextChanged="firstname_TextChanged" />
+        <TextBox x:Name="surname" Grid.Column="3" Grid.Row="1" TextWrapping="Wrap" Width="120" Height="15" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,105,0,0" TextChanged="surname_TextChanged"/>
+        <TextBox x:Name="phone" TextChanged="phone_TextChanged">
             <TextBox.Style>
                 <Style TargetType="TextBox">
-                    <Setter Property="Grid.Row" Value="0" />
+                    <Setter Property="Grid.Row" Value="1" />
                     <Setter Property="Grid.Column" Value="3" />
                     <Setter Property="TextWrapping" Value="Wrap"/>
                     <Setter Property="Width"  Value="120"/>
@@ -116,10 +146,10 @@
                     </Style.Triggers>
                 </Style>
             </TextBox.Style>
-        </TextBox>        
+        </TextBox>
 
-        <Label Grid.Row="1" Grid.Column="3" Content="Look for other books" HorizontalAlignment="Center" FontSize="20" FontFamily="Calibri" />
-        <ListBox Grid.Row="1" Grid.Column="3" Margin="40">
+        <Label Grid.Row="2" Grid.Column="3" Content="Look for other books" HorizontalAlignment="Center" FontSize="20" FontFamily="Calibri" />
+        <ListBox Grid.Row="2" Grid.Column="3" Margin="30">
             <ListBox.Background>
                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1" >
                     <GradientStop Color="LightBlue" Offset="2"/>
@@ -131,24 +161,27 @@
             <ListBoxItem x:Name="Sci" Content="Science fiction" Margin="10" />
         </ListBox>
 
-        <Button Grid.Column="1" Grid.Row="0" Content="Rentals information" Click="Rentals_Click"
-                Style="{StaticResource stylButton}" />
+        <Button Grid.Column="1" Grid.Row="1" Content="Rentals information" Click="Rentals_Click"
+                Style="{StaticResource stylButton}"/>
 
-        <Button Grid.Column="2" Grid.Row="0" Content="Readers information" Click="Readers_Click"
+        <Button Grid.Column="2" Grid.Row="1" Content="Readers information" Click="Readers_Click"
                 Style="{StaticResource stylButton}" />
 
         <DataGrid x:Name="dataGridRentals" Style="{StaticResource styleDataGrid}"
-                  Grid.Column="1" />
+                  Grid.Column="1" Grid.Row="1" />
 
         <DataGrid x:Name="dataGridReaders" Style="{StaticResource styleDataGrid}"
-                  Grid.Column="2"/>
+                  Grid.Column="2" Grid.Row="1"/>
 
-        <Button x:Name="reset" Content="Reset" Style="{StaticResource stylButton}" Click="btnReset"/>
+        <Button x:Name="reset" Content="Reset" Grid.Row="1" Style="{StaticResource stylButton}" Click="btnReset"/>
 
-        <Label Grid.Column="0" Grid.Row="0" Content="Recommended books" VerticalAlignment="Bottom"
+        <Label Grid.Column="0" Grid.Row="1" Content="Recommended books" VerticalAlignment="Bottom"
                HorizontalAlignment="Center" FontWeight="Bold" FontSize="17" FontFamily="Calibri"
                />
 
-        
+        <Label x:Name="lblmessage" Grid.Column="3" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Right"
+               Content="Phone number must be exactly 9 digits long" FontSize="7" Foreground="Red"
+               Margin="10"/>
+
     </Grid>
 </Window>
