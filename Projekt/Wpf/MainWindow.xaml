@@ -38,6 +38,7 @@
                 <Setter Property="BorderThickness" Value="2"/>
                 <Setter Property="BorderBrush" Value="Black" />
                 <Setter Property="Foreground" Value="#FF3030CB"/>
+
             </Style>
 
             <Style x:Key="styleKsiazki" TargetType="Button">
@@ -72,8 +73,8 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Menu Grid.Row="0">
-            <MenuItem  >
+        <Menu Grid.Row="0" Grid.Column ="0" Grid.ColumnSpan="2">
+            <MenuItem >
                 <MenuItem.Header>
                     <WrapPanel>
                         <Image Source="\img\gear.png" MaxWidth="15" MaxHeight="15" HorizontalAlignment="Left"/>
@@ -96,7 +97,11 @@
 
                 <MenuItem x:Name="bold" Header="Bold" Click="ItemBold" IsChecked="False"/>
             </MenuItem>
+            <MenuItem Header="About the authors" Click="AboutAuthors">
+                <DataGrid x:Name="authors" Style="{StaticResource styleDataGrid}" Visibility="Visible" AutoGeneratingColumn="OnAutoGeneratingColumn" />
+            </MenuItem>
             <MenuItem Header="About the program" Click="AboutProgram"/>
+            
         </Menu>
 
         <Button Grid.Column="0" Grid.Row="2" Content="" Click="Book0_Click"  >
@@ -156,7 +161,7 @@
                     <GradientStop Color="AntiqueWhite" Offset="0"/>
                 </LinearGradientBrush>
             </ListBox.Background>
-            <ListBoxItem x:Name="fantasy" Content="Fantasy" Margin="10" />
+            <ListBoxItem x:Name="fantasy" Content="Fantasy" Margin="10" Selected="fantasy_Selected" />
             <ListBoxItem x:Name="horrors" Content="Horror" Margin="10" Selected="horrors_Selected" />
             <ListBoxItem x:Name="Sci" Content="Science fiction" Margin="10" />
         </ListBox>
@@ -171,7 +176,7 @@
                   Grid.Column="1" Grid.Row="1" />
 
         <DataGrid x:Name="dataGridReaders" Style="{StaticResource styleDataGrid}"
-                  Grid.Column="2" Grid.Row="1"/>
+                  Grid.Column="2" Grid.Row="1" AutoGeneratingColumn="OnAutoGeneratingColumn"/>
 
         <Button x:Name="reset" Content="Reset" Grid.Row="1" Style="{StaticResource stylButton}" Click="btnReset"/>
 

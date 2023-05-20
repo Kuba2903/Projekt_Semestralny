@@ -36,10 +36,10 @@ namespace Wpf
         DateTime date = DateTime.Now;
 
 
-        private void Insert(int n)
+        public void Insert(int n)
         {
             Book_LibraryEntities entities = new Book_LibraryEntities();
-
+            
 
             Readers readers = new Readers()
             {
@@ -57,20 +57,19 @@ namespace Wpf
                 reader_id = k,
             };
 
-            entities.Readers.Add(readers);
-            entities.Rentals.Add(rentals);
-
-            entities.SaveChanges();
-
-            MessageBox.Show("Success");
-            /*catch(Exception ex)
+            try
             {
-                using(var context = new Book_LibraryEntities())
-                {
-                    context.Database.ExecuteSqlCommand(@"DBCC CHECKIDENT ('[Readers]', RESEED, 0);");
-                }
+                entities.Readers.Add(readers);
+                entities.Rentals.Add(rentals);
+
+                entities.SaveChanges();
+
+                MessageBox.Show("Success");
+            }
+            catch(Exception ex)
+            {
                 MessageBox.Show("Błąd " + ex.Message);
-            }*/
+            }
         }
 
         private void Book0_Click(object sender, RoutedEventArgs e)
@@ -125,6 +124,26 @@ namespace Wpf
 
             dataGridReaders.Visibility = Visibility.Visible;
             dataGridReaders.ItemsSource = dt.DefaultView;
+
+
+            adapter.Update(dt);
+
+            con.Close();
+        }
+
+        private void AboutAuthors(object sender, RoutedEventArgs e)
+        {
+            SqlConnection con = new SqlConnection("Data Source=HP;Initial Catalog=Book_Library;Integrated Security=True");
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("Select * from Authors", con);
+            cmd.ExecuteNonQuery();
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable("Authors");
+            adapter.Fill(dt);
+            authors.ItemsSource = dt.DefaultView;
 
 
             adapter.Update(dt);
@@ -290,5 +309,17 @@ namespace Wpf
             }
         }
 
+        private void fantasy_Selected(object sender, RoutedEventArgs e)
+        {
+            Fantasy fantasy = new Fantasy();
+            this.Close();
+            fantasy.Show();
+        }
+
+        private void OnAutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyType == typeof(System.DateTime))
+                (e.Column as DataGridTextColumn).Binding.StringFormat = "dd/MM/yyyy";
+        }
     }
 }
