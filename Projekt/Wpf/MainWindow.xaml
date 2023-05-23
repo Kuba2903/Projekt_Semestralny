@@ -163,7 +163,7 @@
             </ListBox.Background>
             <ListBoxItem x:Name="fantasy" Content="Fantasy" Margin="10" Selected="fantasy_Selected" />
             <ListBoxItem x:Name="horrors" Content="Horror" Margin="10" Selected="horrors_Selected" />
-            <ListBoxItem x:Name="Sci" Content="Science fiction" Margin="10" />
+            <ListBoxItem x:Name="Sci" Content="Science fiction" Margin="10" Selected="Sci_Selected" />
         </ListBox>
 
         <Button Grid.Column="1" Grid.Row="1" Content="Rentals information" Click="Rentals_Click"

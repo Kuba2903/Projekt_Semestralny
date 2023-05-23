@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
-using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,11 +17,11 @@ using System.Windows.Shapes;
 namespace Wpf
 {
     /// <summary>
-    /// Interaction logic for Horrors.xaml
+    /// Interaction logic for SciFi.xaml
     /// </summary>
-    public partial class Horrors : Window
+    public partial class SciFi : Window
     {
-        public Horrors()
+        public SciFi()
         {
             InitializeComponent();
         }
@@ -32,7 +31,7 @@ namespace Wpf
             SqlConnection con = new SqlConnection("Data Source=HP;Initial Catalog=Book_Library;Integrated Security=True");
             con.Open();
 
-            SqlCommand cmd = new SqlCommand("Select * from Books where genre = 'Horror'", con);
+            SqlCommand cmd = new SqlCommand("Select * from Books where genre = 'Science Fiction'", con);
             cmd.ExecuteNonQuery();
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -167,17 +166,17 @@ namespace Wpf
         }
         private void Book0_Click(object sender, RoutedEventArgs e)
         {
-            Insert(7);
+            Insert(14);
         }
 
         private void Book1_Click(object sender, RoutedEventArgs e)
         {
-            Insert(8);
+            Insert(15);
         }
 
         private void Book2_Click(object sender, RoutedEventArgs e)
         {
-            Insert(9);
+            Insert(13);
         }
 
         private void btnReset(object sender, RoutedEventArgs e)
@@ -346,11 +345,11 @@ namespace Wpf
                 (e.Column as DataGridTextColumn).Binding.StringFormat = "dd/MM/yyyy";
         }
 
-        private void Sci_Selected(object sender, RoutedEventArgs e)
+        private void horror_Selected(object sender, RoutedEventArgs e)
         {
-            SciFi sci = new SciFi();
+            Horrors horrors = new Horrors();
             this.Close();
-            sci.Show();
+            horrors.Show();
         }
     }
 }

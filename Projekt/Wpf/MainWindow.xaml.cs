@@ -321,5 +321,12 @@ namespace Wpf
             if (e.PropertyType == typeof(System.DateTime))
                 (e.Column as DataGridTextColumn).Binding.StringFormat = "dd/MM/yyyy";
         }
+
+        private void Sci_Selected(object sender, RoutedEventArgs e)
+        {
+            SciFi sci = new SciFi();
+            this.Close();
+            sci.Show();
+        }
     }
 }
