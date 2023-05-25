@@ -8,7 +8,7 @@
         ResizeMode="NoResize"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="#FFD1D9DC" x:Name="window">
-
+        
         <Grid.Resources>
             <Style x:Key="stylButton" TargetType="Button">
                 <Setter Property="Height" Value="40"/>
@@ -26,6 +26,8 @@
             <Style x:Key="styleDataGrid" TargetType="DataGrid">
                 <Setter Property="AutoGenerateColumns" Value="True"/>
                 <Setter Property="Visibility" Value="Hidden"/>
+                <Setter Property="CanUserAddRows" Value="False"/>
+                <Setter Property="CanUserDeleteRows" Value="False"/>
                 <Setter Property="Background">
                     <Setter.Value>
                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
@@ -167,7 +169,7 @@
         </ListBox>
 
         <Button Grid.Column="1" Grid.Row="1" Content="Rentals information" Click="Rentals_Click"
-                Style="{StaticResource stylButton}"/>
+                Style="{StaticResource stylButton}" />
 
         <Button Grid.Column="2" Grid.Row="1" Content="Readers information" Click="Readers_Click"
                 Style="{StaticResource stylButton}" />

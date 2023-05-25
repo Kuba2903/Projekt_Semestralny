@@ -291,7 +291,8 @@ namespace Wpf
 
         private void AboutProgram(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Program");
+            MessageBox.Show("This application allows to rent the books. You need to insert your information and choose the book you want to rent." +
+                "Rents are for one month");
         }
 
         private void firstname_TextChanged(object sender, TextChangedEventArgs e)

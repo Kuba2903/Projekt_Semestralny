@@ -36,10 +36,14 @@ namespace Wpf
         DateTime date = DateTime.Now;
 
 
+        /// <summary>
+        /// This function inserts data to the database. n parameter is the id of book from database
+        /// </summary>
+        /// <param name="n"></param>
+
         public void Insert(int n)
         {
             Book_LibraryEntities entities = new Book_LibraryEntities();
-            
 
             Readers readers = new Readers()
             {
@@ -56,6 +60,7 @@ namespace Wpf
                 book_id = n,
                 reader_id = k,
             };
+
 
             try
             {
@@ -87,6 +92,11 @@ namespace Wpf
             Insert(4);
         }
 
+        /// <summary>
+        /// After clicking displays datagrid with rentals data
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Rentals_Click(object sender, RoutedEventArgs e)
         {
             SqlConnection con = new SqlConnection("Data Source=HP;Initial Catalog=Book_Library;Integrated Security=True");
@@ -109,6 +119,11 @@ namespace Wpf
             con.Close();
         }
 
+        /// <summary>
+        /// After clicking displays datagrid with data from readers table
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Readers_Click(object sender, RoutedEventArgs e)
         {
             SqlConnection con = new SqlConnection("Data Source=HP;Initial Catalog=Book_Library;Integrated Security=True");
@@ -131,6 +146,11 @@ namespace Wpf
             con.Close();
         }
 
+        /// <summary>
+        /// Displays data from authors table
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AboutAuthors(object sender, RoutedEventArgs e)
         {
             SqlConnection con = new SqlConnection("Data Source=HP;Initial Catalog=Book_Library;Integrated Security=True");
@@ -151,6 +171,12 @@ namespace Wpf
             con.Close();
         }
 
+
+        /// <summary>
+        /// Opens the new window, and closes the current
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void horrors_Selected(object sender, RoutedEventArgs e)
         {
             Horrors window = new Horrors();
@@ -158,6 +184,11 @@ namespace Wpf
             window.Show();
         }
 
+        /// <summary>
+        /// This button resets to default settings
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnReset(object sender, RoutedEventArgs e)
         {
             Empty_strings();
@@ -172,6 +203,8 @@ namespace Wpf
         }
 
 
+
+        /// Settings, for changing background and foreground
         private void GreenBackground(object sender, RoutedEventArgs e)
         {
             window.Background = Brushes.LightGreen;
@@ -264,12 +297,19 @@ namespace Wpf
             redF.IsChecked = true;
         }
 
-
+        /// -----------
         private void AboutProgram(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Program");
+            MessageBox.Show("This application allows to rent the books. You need to insert your information and choose the book you want to rent." +
+                "Rents are for one month");
         }
 
+
+        /// <summary>
+        /// When other characters than letters are inserted it changes the foreground to red
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void firstname_TextChanged(object sender, TextChangedEventArgs e)
         {
             bool isLetters = firstname.Text.Any(x => !char.IsLetter(x));
@@ -280,6 +320,11 @@ namespace Wpf
                 firstname.Foreground = Brushes.Green;
         }
 
+        /// <summary>
+        /// When other characters than letters are inserted it changes the foreground to red
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void surname_TextChanged(object sender, TextChangedEventArgs e)
         {
             bool isLetters = surname.Text.Any(x => !char.IsLetter(x));
@@ -290,6 +335,12 @@ namespace Wpf
                 surname.Foreground = Brushes.Green;
         }
 
+
+        /// <summary>
+        /// When other characters than digits are inserted it changes the foreground to red
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void phone_TextChanged(object sender, TextChangedEventArgs e)
         {
             bool isDigits = phone.Text.Any(x => !char.IsDigit(x));
@@ -309,6 +360,11 @@ namespace Wpf
             }
         }
 
+        /// <summary>
+        /// closes the current window and open new
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void fantasy_Selected(object sender, RoutedEventArgs e)
         {
             Fantasy fantasy = new Fantasy();
@@ -316,6 +372,11 @@ namespace Wpf
             fantasy.Show();
         }
 
+        /// <summary>
+        /// Changes the format of date
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnAutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             if (e.PropertyType == typeof(System.DateTime))
