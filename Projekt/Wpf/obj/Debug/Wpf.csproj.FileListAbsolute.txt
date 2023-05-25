@@ -50,3 +50,7 @@ C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\Fantasy.g.cs
 C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\Fantasy.baml
 C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\SciFi.g.cs
 C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\SciFi.baml
+C:\Projekty\projekt__semestralny\Projekt\Wpf\bin\Debug\Wpf.exe.manifest
+C:\Projekty\projekt__semestralny\Projekt\Wpf\bin\Debug\Wpf.application
+C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\Wpf.exe.manifest
+C:\Projekty\projekt__semestralny\Projekt\Wpf\obj\Debug\Wpf.application
